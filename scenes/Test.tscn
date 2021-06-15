@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/temp-path.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "temp-path.png 0"
@@ -53,8 +54,11 @@
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 24, 544, 0, 0, 0, 0, 1896, 544 )
+"points": PoolVector2Array( 0, 0, 0, 0, 32, 544, 0, 0, 0, 0, 1896, 544 )
 }
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 960, 32 )
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource( 1 )
@@ -66,5 +70,14 @@ tile_data = PoolIntArray( 524288, 0, 65542, 524289, 0, 2, 524290, 0, 2, 524291, 
 curve = SubResource( 2 )
 
 [node name="Enemy" parent="Path2D" instance=ExtResource( 2 )]
-position = Vector2( 24, 544 )
+position = Vector2( 32, 544 )
 speed = 50
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 960, 544 )
+shape = SubResource( 3 )
+
+[node name="Tower" parent="." instance=ExtResource( 3 )]
+position = Vector2( 160, 608 )
