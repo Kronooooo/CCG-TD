@@ -30,5 +30,10 @@ func _process(_delta):
 func _on_Area2D_area_entered(area):
 	enemies.append(area.get_parent())
 
+func _on_Area2D_area_exited(area):
+	enemies.erase(area.get_parent())
+	
 func _on_Timer_timeout():
 	canShoot = true
+
+
