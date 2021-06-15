@@ -21,7 +21,6 @@ func _process(_delta):
 		target = null
 	
 	if target != null and canShoot:
-		print("got")
 		canShoot = false
 		projectile = Projectile.instance()
 		call_deferred("add_child",projectile)

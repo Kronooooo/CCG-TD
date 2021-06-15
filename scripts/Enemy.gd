@@ -5,7 +5,7 @@ export var speed = 100
 var hp = 5
 
 func _ready():
-	print(hp)
+	pass
 
 func _process(delta):
 	offset += delta * speed
