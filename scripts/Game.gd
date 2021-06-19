@@ -13,6 +13,7 @@ func _ready():
 	createLevel()
 
 func _process(_delta):
+	$Label2.set_text(str(hp))
 	if hp <= 0:
 		print("you lost lmao")
 		get_tree().quit()
