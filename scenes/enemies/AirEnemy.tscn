@@ -8,6 +8,7 @@
 [node name="PathFollow2D" type="PathFollow2D" groups=[
 "enemy",
 ]]
+loop = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

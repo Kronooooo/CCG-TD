@@ -1,8 +1,14 @@
 extends PathFollow2D
 
-export var speed = 100
+export var speed = 100 setget set_speed, get_speed
 
 var hp = 100
+
+func set_speed(s):
+	speed = s
+	
+func get_speed():
+	return speed
 
 func _ready():
 	pass
@@ -15,7 +21,6 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 	var parent
-	print(area.get_groups())
 	if area.is_in_group("projectile"):
 		parent = area.get_parent()
 		hp -= parent.get_damage()

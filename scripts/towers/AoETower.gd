@@ -23,7 +23,7 @@ func _process(_delta):
 			for target in enemies:
 				projectile = Projectile.instance()
 				call_deferred("add_child",projectile)
-				projectile.setTarget(target)
+				projectile.set_target(target)
 			timer.start()
 
 func _on_Area2D_area_entered(area):

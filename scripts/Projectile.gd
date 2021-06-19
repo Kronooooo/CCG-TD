@@ -1,6 +1,6 @@
 extends Area2D
 
-var target
+var target setget set_target
 var speed = 400
 var direction
 
@@ -14,5 +14,5 @@ func _process(delta):
 	else:
 		call_deferred("free")
 		
-func setTarget(t):
+func set_target(t):
 	target = t
