@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temp-aoe-tower.png-6761369cca37504a41d3e544aad7787d.stex"
+path="res://.import/temp-aoe-tower.png-da571a2dcf2ec2a7a7a6d65fb530c133.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/temp-aoe-tower.png"
-dest_files=[ "res://.import/temp-aoe-tower.png-6761369cca37504a41d3e544aad7787d.stex" ]
+source_file="res://sprites/towers/temp-aoe-tower.png"
+dest_files=[ "res://.import/temp-aoe-tower.png-da571a2dcf2ec2a7a7a6d65fb530c133.stex" ]
 
 [params]
 
