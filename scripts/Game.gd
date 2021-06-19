@@ -27,7 +27,7 @@ func createLevel():
 		if "Path" in child.get_name():
 			paths.append(child)
 	
-	for i in range(30):
+	for i in range(1):
 		randomize()
 		enemies.shuffle()
 		timer.start()

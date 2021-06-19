@@ -2,36 +2,17 @@
 
 [ext_resource path="res://sprites/enemies/temp-enemy.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://sprites/enemies/healthbar/foreground.png" type="Texture" id=3]
+[ext_resource path="res://sprites/enemies/healthbar/background.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.0666667, 1, 0, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 0, 0, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-border_blend = true
 
 [node name="Enemy" type="PathFollow2D" groups=[
 "enemy",
 ]]
 loop = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -43,16 +24,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_left = -12.009
-margin_top = -19.6569
-margin_right = 11.991
-margin_bottom = -5.65687
-rect_scale = Vector2( 1, 0.5 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
-max_value = 1.0
-percent_visible = false
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HP" type="TextureProgress" parent="."]
+margin_left = -16.8179
+margin_top = -21.4429
+margin_right = 16.1821
+margin_bottom = -13.4429
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

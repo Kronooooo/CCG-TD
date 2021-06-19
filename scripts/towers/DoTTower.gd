@@ -6,8 +6,8 @@ var enemies = []
 var target
 
 var projectile
-var damage = 10 setget , get_damage
-var dotDamage = 1
+var damage = 0 setget , get_damage
+var dotDamage = 10
 
 onready var Projectile = load("res://scenes/projectiles/Projectile.tscn")
 onready var timer = $Timer
@@ -38,6 +38,7 @@ func dealDotDamage(enemy):
 		dotTimer.start()
 		yield(dotTimer,"timeout")
 		enemy.hp -= dotDamage
+		enemy.updateHP()
 
 func _on_Area2D_area_entered(area):
 	enemies.append(area.get_parent())
