@@ -6,13 +6,16 @@ var enemies = []
 var target
 
 var projectile
-onready var Projectile = load("res://scenes/Projectile.tscn")
-onready var timer = $Timer
+var damage = 20 setget , get_damage
 
-const RADIUS = 128
+onready var Projectile = load("res://scenes/projectiles/Projectile.tscn")
+onready var timer = $Timer
 
 func _ready():
 	pass
+	
+func get_damage():
+	return damage
 
 func _process(_delta):
 	if enemies.size() > 0:
@@ -35,5 +38,3 @@ func _on_Area2D_area_exited(area):
 	
 func _on_Timer_timeout():
 	canShoot = true
-
-

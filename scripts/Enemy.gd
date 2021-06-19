@@ -2,7 +2,7 @@ extends PathFollow2D
 
 export var speed = 100
 
-var hp = 5
+var hp = 100
 
 func _ready():
 	pass
@@ -15,9 +15,10 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 	var parent
+	print(area.get_groups())
 	if area.is_in_group("projectile"):
-		hp -= 1
 		parent = area.get_parent()
+		hp -= parent.get_damage()
 		area.call_deferred("free")
 	if hp <= 0:
 		parent.enemies.erase(self)
