@@ -13,6 +13,10 @@ config_version=4
 config/name="CCG-TD"
 config/icon="res://icon.png"
 
+[autoload]
+
+CB="*res://scripts/CB.gd"
+
 [display]
 
 window/size/width=1920
