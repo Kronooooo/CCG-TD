@@ -2,7 +2,7 @@ extends Area2D
 
 var damage setget , get_damage
 var canShoot
-var enemies
+var enemies = []
 var slow = false
 var dot = false
 
@@ -14,7 +14,7 @@ onready var timer = $Timer
 func _ready():
 	pass
 	
-func _process(delta):
+func _process(_delta):
 	call(damageFunction)
 
 func get_damage():
@@ -24,17 +24,17 @@ func initTower(id):
 	var dict = CB.CardBase[id]
 	damage = dict["atk"]
 	timer.set_wait_time(dict["interval"])
-	$Area2D/CollisionShape2D.set_radius(dict["range"])
+	$Area2D/CollisionShape2D.shape.set_radius(dict["range"])
 	$Sprite.set_texture(load(dict["sprite"]))
 	
 	if dict["canTargetAir"]:
-		$Area2D.set_collision_mask(3)
+		$Area2D.set_collision_mask_bit(2,true)
 		Projectile = load("res://scenes/projectiles/AirProjectile.tscn")
 	else:
 		Projectile = load("res://scenes/projectiles/Projectile.tscn")
-		$Area2D.set_colllision_mask(2)
+		$Area2D.set_collision_mask_bit(1,true)
 		
-	if dict["aoe"]:
+	if dict["AOE"]:
 		damageFunction = "damageAoE"
 		canShoot = true
 	else:
