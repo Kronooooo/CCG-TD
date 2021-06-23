@@ -8,9 +8,14 @@
 
 config_version=4
 
+_global_script_classes=[  ]
+_global_script_class_icons={
+}
+
 [application]
 
-config/name="CCG-TD"
+config/name="Card Game Tutorial Part 4"
+run/main_scene="res://Playspace.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,19 +26,14 @@ CB="*res://scripts/CB.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
-window/size/borderless=true
 
-[layer_names]
+[input]
 
-2d_render/layer_1="Towers"
-2d_physics/layer_1="Towers"
-2d_render/layer_2="Enemy"
-2d_physics/layer_2="Enemy"
-
-[physics]
-
-common/enable_pause_aware_picking=true
+leftclick={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 
