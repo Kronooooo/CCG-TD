@@ -29,6 +29,8 @@ func initTower(id):
 	interval = dict["interval"]
 	$Timer.set_wait_time(interval)
 	towerRange = dict["range"]
+	slow = dict["slow"]
+	dot = dict["dot"]
 	$Area2D/CollisionShape2D.shape.set_radius(towerRange)
 	$Sprite.set_texture(load(dict["towerSprite"]))
 	
@@ -46,8 +48,8 @@ func initTower(id):
 		damageFunction = "damageSingle"
 		canShoot = true
 		
-	slow = dict["slow"]
-	dot = dict["dot"]
+	if slow:
+		$Area2D.set_collision_mask_bit(1,true)
 
 func damageAoE():
 	var projectile
@@ -80,8 +82,9 @@ func damageSingle():
 func damageDoT(enemy):
 	for _i in range(5):
 		yield(get_tree().create_timer(0.5),"timeout")
-		enemy.hp -= damage
-		enemy.updateHP()
+		if is_instance_valid(enemy):
+			enemy.hp -= damage
+			enemy.updateHP()
 
 func _on_Area2D_area_entered(area):
 	if slow:
