@@ -36,7 +36,5 @@ func _on_Area2D_area_entered(area):
 		parent.enemies.erase(self)
 
 func updateHP():
-	print(bar.value)
 	tween.interpolate_property(bar,"value", bar.value, hp,0.4, tween.TRANS_SINE, tween.EASE_IN_OUT)
 	tween.start()
-	print(bar.value)

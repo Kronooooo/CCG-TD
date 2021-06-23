@@ -20,7 +20,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-CDB="*res://Assets/Cards/CardsDatabase.gd"
+CB="*res://scripts/CB.gd"
 
 [display]
 
