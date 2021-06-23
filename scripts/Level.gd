@@ -9,6 +9,11 @@ var levels = [preload("res://scenes/levels/Level1.tscn"),preload("res://scenes/l
 var enemies = [preload("res://scenes/enemies/Enemy.tscn"),preload("res://scenes/enemies/AirEnemy.tscn")]
 var paths = []
 
+var spawnedEnemies = {}
+var numEnemies = 10
+var numBasic = 0
+var numAir = 0
+
 onready var tower = load("res://scenes/towers/Tower.tscn")
 
 func _ready():
@@ -29,15 +34,24 @@ func createLevel():
 		if "Path" in child.get_name():
 			paths.append(child)
 	
-	for i in range(1):
+	for i in range(numEnemies):
 		randomize()
 		enemies.shuffle()
-		timer.start()
-		yield(timer,"timeout")
 		var enemy = enemies[0].instance()
 		var path = paths[i % paths.size()]
+		spawnedEnemies[enemy] = path
+		if "Air" in enemy.get_name():
+			numAir += 1
+		else:
+			numBasic += 1
+
+func spawnEnemies():
+	for enemy in spawnedEnemies.keys():
+		var path = spawnedEnemies[enemy]
+		timer.start()
+		yield(timer,"timeout")
 		level.get_node(path.get_name()).call_deferred("add_child",enemy)
-		
+	
 func playCard(id,pos):
 	var type = CDB.CB[id]["type"]
 	if type == "tower":
@@ -45,3 +59,7 @@ func playCard(id,pos):
 		x.position = pos
 		call_deferred("add_child",x)
 		x.initTower(id)
+
+func _on_Button_pressed():
+	spawnEnemies()
+	$Button.disabled = true
