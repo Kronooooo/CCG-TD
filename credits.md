@@ -1,5 +1,5 @@
 # Credits
 
-# # Programmers
+## Programmers
 Emre Duzenli
 Donnell Jones
