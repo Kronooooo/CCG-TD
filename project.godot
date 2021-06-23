@@ -15,7 +15,6 @@ _global_script_class_icons={
 [application]
 
 config/name="CCG-TD"
-run/main_scene="res://Playspace.tscn"
 config/icon="res://icon.png"
 
 [autoload]
