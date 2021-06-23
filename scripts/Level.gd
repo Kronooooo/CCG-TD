@@ -9,6 +9,8 @@ var levels = [preload("res://scenes/levels/Level1.tscn"),preload("res://scenes/l
 var enemies = [preload("res://scenes/enemies/Enemy.tscn"),preload("res://scenes/enemies/AirEnemy.tscn")]
 var paths = []
 
+onready var tower = load("res://scenes/towers/Tower.tscn")
+
 func _ready():
 	createLevel()
 
@@ -35,13 +37,11 @@ func createLevel():
 		var enemy = enemies[0].instance()
 		var path = paths[i % paths.size()]
 		level.get_node(path.get_name()).call_deferred("add_child",enemy)
-<<<<<<< Updated upstream:scripts/Game.gd
-=======
 		
 func playCard(id,pos):
 	var type = CDB.CB[id]["type"]
 	if type == "tower":
-		var x = tower.instance(id)
+		var x = tower.instance()
 		x.position = pos
 		call_deferred("add_child",x)
->>>>>>> Stashed changes:scripts/Level.gd
+		x.initTower(id)

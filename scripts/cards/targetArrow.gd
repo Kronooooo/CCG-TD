@@ -89,7 +89,7 @@ func towerTarget():
 	else:
 		modulate = Color("d52c2c")
 		validPlace = false
-	return get_local_mouse_position()
+	return get_global_mouse_position()
 	
 func splashTarget():
 	if get_parent().get_parent().get_parent().get_node("Hand") in $Area2D.get_overlapping_areas():

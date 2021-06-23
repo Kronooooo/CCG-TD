@@ -27,7 +27,7 @@ func initTower(id):
 	var dict = CDB.CB[id]
 	damage = dict["atk"]
 	interval = dict["interval"]
-	timer.set_wait_time(interval)
+	$Timer.set_wait_time(interval)
 	towerRange = dict["range"]
 	$Area2D/CollisionShape2D.shape.set_radius(towerRange)
 	$Sprite.set_texture(load(dict["towerSprite"]))
@@ -95,7 +95,7 @@ func _on_Area2D_area_exited(area):
 		var parent = area.get_parent()
 		parent.set_speed(parent.get_speed()*(1/slowAmount))
 	else:
-		enemies.append(area.get_parent())
+		enemies.erase(area.get_parent())
 
 func _on_Timer_timeout():
 	canShoot = true

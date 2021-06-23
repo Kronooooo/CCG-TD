@@ -12,7 +12,7 @@ script = ExtResource( 4 )
 [node name="Cards" type="Node" parent="."]
 
 [node name="Deck" type="Node2D" parent="."]
-position = Vector2( 46.8143, 428.542 )
+position = Vector2( 104, 872 )
 __meta__ = {
 "_edit_group_": true
 }
