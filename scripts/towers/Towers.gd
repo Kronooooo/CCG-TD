@@ -5,6 +5,8 @@ var canShoot
 var enemies = []
 var slow = false
 var dot = false
+var interval
+var slowAmount = 0.7
 
 var Projectile
 var damageFunction
@@ -21,9 +23,10 @@ func get_damage():
 	return damage
 	
 func initTower(id):
-	var dict = CB.CardBase[id]
+	var dict = CDB.CB[id]
 	damage = dict["atk"]
-	timer.set_wait_time(dict["interval"])
+	interval = dict["interval"]
+	timer.set_wait_time(interval)
 	$Area2D/CollisionShape2D.shape.set_radius(dict["range"])
 	$Sprite.set_texture(load(dict["sprite"]))
 	
@@ -81,16 +84,24 @@ func damageDoT(enemy):
 func _on_Area2D_area_entered(area):
 	if slow:
 		var parent = area.get_parent()
-		parent.set_speed(parent.get_speed()*0.7)
+		parent.set_speed(parent.get_speed()*slowAmount)
 	else:
 		enemies.append(area.get_parent())
 
 func _on_Area2D_area_exited(area):
 	if slow:
 		var parent = area.get_parent()
-		parent.set_speed(parent.get_speed()*(1/0.7))
+		parent.set_speed(parent.get_speed()*(1/slowAmount))
 	else:
 		enemies.append(area.get_parent())
 
 func _on_Timer_timeout():
 	canShoot = true
+	
+func upgrade(stat,amount):
+	if stat == "atk":
+		damage += amount
+	elif stat == "spd":
+		interval -= amount
+	elif stat == "slow":
+		slowAmount += amount

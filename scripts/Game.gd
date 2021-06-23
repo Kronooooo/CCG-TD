@@ -5,6 +5,7 @@ onready var timer = $Timer
 var level
 var hp = 15
 
+var tower = preload("res://scenes/towers/Tower.tscn")
 var levels = [preload("res://scenes/levels/Level1.tscn"),preload("res://scenes/levels/Level2.tscn"), preload("res://scenes/levels/Level3.tscn")]
 var enemies = [preload("res://scenes/enemies/Enemy.tscn"),preload("res://scenes/enemies/AirEnemy.tscn")]
 var paths = []
@@ -35,3 +36,10 @@ func createLevel():
 		var enemy = enemies[0].instance()
 		var path = paths[i % paths.size()]
 		level.get_node(path.get_name()).call_deferred("add_child",enemy)
+		
+func x(id,pos):
+	var type = CDB.CB[id]["type"]
+	if type == "tower":
+		var x = tower.instance(id)
+		x.pos = pos
+		call_deferred("add_child",x)

@@ -1,10 +1,6 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-const CardBase = {
+const CB = {
 		0:{"title": "Test Card TOWER",
 			"atk": 20,
 			"interval": 1.0,
@@ -13,7 +9,10 @@ const CardBase = {
 			"AOE": false,
 			"slow":false,
 			"dot":false,
-			"sprite":"res://sprites/towers/temp-tower.png",
+			"towerSprite":"res://sprites/towers/temp-tower.png",
+			"cardSprite":"res://Assets/Cards/Units/Basic.png",
+			"type":"tower",
+			"cost":1,
 		} ,
 		1:{"title": "Test Card FLYING TOWER",
 			"atk": 20,
@@ -23,7 +22,10 @@ const CardBase = {
 			"AOE": false,
 			"slow":false,
 			"dot":false,
-			"sprite":"res://sprites/towers/temp-air-tower.png",
+			"towerSprite":"res://sprites/towers/temp-air-tower.png",
+			"cardSprite":"res://Assets/Cards/Units/Flying.png",
+			"type":"tower",
+			"cost":1,
 		} ,
 		2:{"title": "Test Card AOE TOWER",
 			"atk": 10,
@@ -33,7 +35,10 @@ const CardBase = {
 			"AOE": true,
 			"slow":false,
 			"dot":false,
-			"sprite":"res://sprites/towers/temp-aoe-tower.png",
+			"towerSprite":"res://sprites/towers/temp-aoe-tower.png",
+			"cardSprite":"res://Assets/Cards/Units/AOE.png",
+			"type":"tower",
+			"cost":1,
 		} ,
 		3:{"title": "Test Card DoT TOWER",
 			"atk": 10,
@@ -43,7 +48,10 @@ const CardBase = {
 			"AOE": false,
 			"slow":false,
 			"dot":true,
-			"sprite":"res://sprites/towers/temp-dot-tower.png",
+			"towerSprite":"res://sprites/towers/temp-dot-tower.png",
+			"cardSprite":"res://Assets/Cards/Units/DoT.png",
+			"type":"tower",
+			"cost":1,
 		} ,
 		4:{"title": "Test Card SLOW TOWER",
 			"atk": 0,
@@ -53,11 +61,16 @@ const CardBase = {
 			"AOE": true,
 			"slow":true,
 			"dot":false,
-			"sprite":"res://sprites/towers/temp-slow-tower.png",
+			"towerSprite":"res://sprites/towers/temp-slow-tower.png",
+			"cardSprite":"res://Assets/Cards/Units/Slow.png",
+			"type":"tower",
+			"cost":1,
 		} ,
-		
+		100:{"title": "Test Card Splash",
+			"text": "",
+			"cardSprite":"",
+			"type":"splash",
+			"cost":10,
+			"scene":"",
+			}
 	}
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
