@@ -19,10 +19,12 @@ func _ready():
 
 func _process(delta):
 	if hp <= 0:
+		get_parent().get_parent().get_parent().spawnedEnemies.erase(self)
 		call_deferred("free")
 	offset += delta * speed
 	if unit_offset >= 1:
 		get_parent().get_parent().get_parent().hp -= 1
+		get_parent().get_parent().get_parent().spawnedEnemies.erase(self)
 		call_deferred("free")
 
 func _on_Area2D_area_entered(area):
@@ -32,8 +34,6 @@ func _on_Area2D_area_entered(area):
 		hp -= parent.get_damage()
 		area.call_deferred("free")
 		updateHP()
-	if hp <= 0:
-		parent.enemies.erase(self)
 
 func updateHP():
 	tween.interpolate_property(bar,"value", bar.value, hp,0.4, tween.TRANS_SINE, tween.EASE_IN_OUT)
