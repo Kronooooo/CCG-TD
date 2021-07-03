@@ -14,8 +14,8 @@ func get_speed():
 	return speed
 
 func _ready():
-	$HP.set_value(hp)
-	$HP.max_value = hp
+	bar.max_value = hp
+	bar.set_value(hp)
 
 func _process(delta):
 	if hp <= 0:
@@ -38,3 +38,7 @@ func _on_Area2D_area_entered(area):
 func updateHP():
 	tween.interpolate_property(bar,"value", bar.value, hp,0.4, tween.TRANS_SINE, tween.EASE_IN_OUT)
 	tween.start()
+
+func initHpBarValues():
+	bar.max_value = hp
+	bar.set_value(hp)
