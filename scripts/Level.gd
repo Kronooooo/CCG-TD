@@ -8,7 +8,7 @@ var hp = 15
 var waveCompleted = false
 
 var levels = [preload("res://scenes/levels/Level1.tscn"),preload("res://scenes/levels/Level2.tscn"), preload("res://scenes/levels/Level3.tscn")]
-var enemies = [preload("res://scenes/enemies/Enemy.tscn"),preload("res://scenes/enemies/AirEnemy.tscn"),preload("res://scenes/enemies/Tank.tscn")]
+var enemies = [preload("res://scenes/enemies/Enemy.tscn"),preload("res://scenes/enemies/AirEnemy.tscn"),preload("res://scenes/enemies/Tank.tscn"),preload("res://scenes/enemies/Speed.tscn")]
 var paths = []
 
 var spawnedEnemies = {}
@@ -16,12 +16,14 @@ var numEnemies = 10
 var numBasic = 0
 var numAir = 0
 var numTank = 0
+var numSpeed = 0
 
 onready var tower = load("res://scenes/towers/Tower.tscn")
 onready var Vbox = $CanvasLayer/ColorRect/VBoxContainer
 onready var HboxBasic = $CanvasLayer/ColorRect/VBoxContainer/HBoxContainer
 onready var HboxAir = $CanvasLayer/ColorRect/VBoxContainer/HBoxContainer2
 onready var HboxTank = $CanvasLayer/ColorRect/VBoxContainer/HBoxContainer3
+onready var HboxSpeed = $CanvasLayer/ColorRect/VBoxContainer/HBoxContainer4
 
 func _ready():
 	createLevel()
@@ -57,6 +59,7 @@ func createEnemies():
 	numAir = 0
 	numBasic = 0
 	numTank = 0
+	numSpeed = 0
 	for i in range(numEnemies):
 		randomize()
 		enemies.shuffle()
@@ -67,6 +70,8 @@ func createEnemies():
 			numAir += 1
 		elif "Tank" in enemy.get_name():
 			numTank += 1
+		elif "Speed" in enemy.get_name():
+			numSpeed += 1
 		else:
 			numBasic += 1
 		
@@ -110,6 +115,10 @@ func updateWavePreview():
 		size += 64
 		HboxTank.visible = true
 		HboxTank.get_node("Label").set_text(str(numTank))
+	if numSpeed > 0:
+		size += 64
+		HboxSpeed.visible = true
+		HboxSpeed.get_node("Label").set_text(str(numSpeed))
 
 	Vbox.rect_size.y = size
 	Vbox.get_parent().rect_size.y = size
@@ -120,6 +129,7 @@ func closeWavePreview():
 	HboxBasic.visible = false
 	HboxAir.visible = false
 	HboxTank.visible = false
+	HboxSpeed.visible = false
 	
 func clearTowers():
 	for x in get_children():
